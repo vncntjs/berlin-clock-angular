@@ -1,17 +1,17 @@
 <div class="clock-wrapper">
-  <div class="second" [ngClass]="{ 'orange-background': inkCircle }"></div>
+  <div class="second" [ngClass]="{ 'orange-background': fillCircle }"></div>
   <div id="five-hour-row" class="row">
     <div
       *ngFor="let element of fiveHourRowElements; let i = index"
       class="square"
-      [ngClass]="{ 'red-background': inkFiveHourRow > i }"
+      [ngClass]="{ 'red-background': fillFiveHourRowElements > i }"
     ></div>
   </div>
   <div id="single-hour-row" class="row">
     <div
       *ngFor="let element of singleHourRowElements; let i = index"
       class="square"
-      [ngClass]="{ 'red-background': inkSingleHourRow > i }"
+      [ngClass]="{ 'red-background': fillSingleHourRowElements > i }"
     ></div>
   </div>
   <div id="five-minute-row" class="row">
@@ -19,7 +19,7 @@
       *ngFor="let element of fiveMinuteRowElements; let i = index"
       class="square"
       [ngClass]="{
-        'orange-background': inkFiveMinuteRow > i,
+        'orange-background': fillFiveMinuteRowElements > i,
         'red-background': isQuarterHourMark(i)
       }"
     ></div>
@@ -28,8 +28,8 @@
     <div
       *ngFor="let element of singleMinuteRowElements; let i = index"
       class="square"
-      [ngClass]="{ 'orange-background': inkSingleMinuteRow > i }"
+      [ngClass]="{ 'orange-background': fillSingleMinuteRowElements > i }"
     ></div>
   </div>
-  <div class="time">{{ $time | async | date: "H:mm:ss" }}</div>
+  <div class="time">{{ time$ | async | date: "H:mm:ss" }}</div>
 </div>

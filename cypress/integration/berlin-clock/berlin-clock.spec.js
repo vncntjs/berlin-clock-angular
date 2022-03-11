@@ -6,7 +6,7 @@ describe("berlin clock", () => {
   });
 
   describe("seconds circle", () => {
-    it("should ink circle orange on odd seconds", () => {
+    it("should fill circle orange on odd seconds", () => {
       cy.clock(new Date().setSeconds(1));
 
       cy.get(".second").should(
@@ -16,7 +16,7 @@ describe("berlin clock", () => {
       );
     });
 
-    it("should not ink circle on even seconds", () => {
+    it("should not fill circle on even seconds", () => {
       cy.clock(new Date().setSeconds(2));
 
       cy.get(".second").should(
@@ -28,7 +28,7 @@ describe("berlin clock", () => {
   });
 
   describe("five hour row", () => {
-    it("should ink 1 element red", () => {
+    it("should fill 1 element red on 5 hours", () => {
       cy.clock(new Date().setHours(5));
 
       cy.get("#five-hour-row > :nth-child(1)").should(
@@ -43,7 +43,7 @@ describe("berlin clock", () => {
       );
     });
 
-    it("should not ink any element", () => {
+    it("should not fill any element on 4 hours", () => {
       cy.clock(new Date().setHours(4));
 
       cy.get("#five-hour-row").each((element) => {
@@ -57,7 +57,7 @@ describe("berlin clock", () => {
   });
 
   describe("single hour row", () => {
-    it("should ink 1 element red", () => {
+    it("should fill 1 element red on 1 hour", () => {
       cy.clock(new Date().setHours(1));
 
       cy.get("#single-hour-row > :nth-child(1)").should(
@@ -72,7 +72,7 @@ describe("berlin clock", () => {
       );
     });
 
-    it("should not ink any element", () => {
+    it("should not fill any element on 5 hours", () => {
       cy.clock(new Date().setHours(5));
 
       cy.get("#single-hour-row").each((element) => {
@@ -86,7 +86,7 @@ describe("berlin clock", () => {
   });
 
   describe("five minute row", () => {
-    it("should ink 2 elements orange", () => {
+    it("should fill 2 elements orange on 14 minutes", () => {
       cy.clock(new Date().setMinutes(14));
 
       cy.get("#five-minute-row > :nth-child(1)").should(
@@ -107,7 +107,7 @@ describe("berlin clock", () => {
       );
     });
 
-    it("should ink third element red", () => {
+    it("should fill third element red on 15 minutes", () => {
       cy.clock(new Date().setMinutes(15));
 
       cy.get("#five-minute-row > :nth-child(3)").should(
@@ -117,7 +117,7 @@ describe("berlin clock", () => {
       );
     });
 
-    it("should not ink any element", () => {
+    it("should not fill any element on 0 minutes", () => {
       cy.clock(new Date().setMinutes(0));
 
       cy.get("#five-minute-row").each((element) => {
@@ -131,7 +131,7 @@ describe("berlin clock", () => {
   });
 
   describe("single minute row", () => {
-    it("should ink 1 element orange", () => {
+    it("should fill 1 element orange on 1 minute", () => {
       cy.clock(new Date().setMinutes(1));
 
       cy.get("#single-minute-row > :nth-child(1)").should(
@@ -146,7 +146,7 @@ describe("berlin clock", () => {
       );
     });
 
-    it("should not ink any element", () => {
+    it("should not fill any element on 0 minutes", () => {
       cy.clock(new Date().setMinutes(0));
 
       cy.get("#single-minute-row").each((element) => {

@@ -8,32 +8,32 @@ import { map } from "rxjs/operators";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
-  $time: Observable<Date> = timer(0, 1000).pipe(map(() => new Date()));
-  fiveHourRowElements = new Array(4).fill(null);
-  singleHourRowElements = new Array(4).fill(null);
-  fiveMinuteRowElements = new Array(11).fill(null);
-  singleMinuteRowElements = new Array(4).fill(null);
-  inkCircle = false;
-  inkFiveHourRow = 0;
-  inkSingleHourRow = 0;
-  inkFiveMinuteRow = 0;
-  inkSingleMinuteRow = 0;
+  readonly time$: Observable<Date> = timer(0, 1000).pipe(map(() => new Date()));
+  readonly fiveHourRowElements = new Array(4).fill(null);
+  readonly singleHourRowElements = new Array(4).fill(null);
+  readonly fiveMinuteRowElements = new Array(11).fill(null);
+  readonly singleMinuteRowElements = new Array(4).fill(null);
+  fillCircle = false;
+  fillFiveHourRowElements = 0;
+  fillSingleHourRowElements = 0;
+  fillFiveMinuteRowElements = 0;
+  fillSingleMinuteRowElements = 0;
 
   ngOnInit() {
-    this.$time.subscribe((time) => {
+    this.time$.subscribe((time) => {
       const hours = time.getHours();
       const minutes = time.getMinutes();
       const seconds = time.getSeconds();
 
-      this.inkCircle = !!(seconds % 2);
-      this.inkFiveHourRow = Math.floor(hours / 5);
-      this.inkSingleHourRow = hours % 5;
-      this.inkFiveMinuteRow = Math.floor(minutes / 5);
-      this.inkSingleMinuteRow = minutes % 5;
+      this.fillCircle = !!(seconds % 2);
+      this.fillFiveHourRowElements = Math.floor(hours / 5);
+      this.fillSingleHourRowElements = hours % 5;
+      this.fillFiveMinuteRowElements = Math.floor(minutes / 5);
+      this.fillSingleMinuteRowElements = minutes % 5;
     });
   }
 
-  isQuarterHourMark(index: number) {
-    return !((index + 1) % 3) && this.inkFiveMinuteRow > index;
+  isQuarterHourMark(index: number): boolean {
+    return !((index + 1) % 3) && this.fillFiveMinuteRowElements > index;
   }
 }
