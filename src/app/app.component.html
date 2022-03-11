@@ -1,20 +1,20 @@
 <div class="clock-wrapper">
   <div class="second" [ngClass]="{ 'orange-background': inkCircle }"></div>
-  <div class="row">
+  <div id="five-hour-row" class="row">
     <div
       *ngFor="let element of fiveHourRowElements; let i = index"
       class="square"
       [ngClass]="{ 'red-background': inkFiveHourRow > i }"
     ></div>
   </div>
-  <div class="row">
+  <div id="single-hour-row" class="row">
     <div
       *ngFor="let element of singleHourRowElements; let i = index"
       class="square"
       [ngClass]="{ 'red-background': inkSingleHourRow > i }"
     ></div>
   </div>
-  <div class="row">
+  <div id="five-minute-row" class="row">
     <div
       *ngFor="let element of fiveMinuteRowElements; let i = index"
       class="square"
@@ -24,7 +24,7 @@
       }"
     ></div>
   </div>
-  <div class="row">
+  <div id="single-minute-row" class="single-minute-row row">
     <div
       *ngFor="let element of singleMinuteRowElements; let i = index"
       class="square"
