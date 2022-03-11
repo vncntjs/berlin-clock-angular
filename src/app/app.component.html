@@ -1,0 +1,35 @@
+<div class="clock-wrapper">
+  <div class="second" [ngClass]="{ 'orange-background': inkCircle }"></div>
+  <div class="row">
+    <div
+      *ngFor="let element of fiveHourRowElements; let i = index"
+      class="square"
+      [ngClass]="{ 'red-background': inkFiveHourRow > i }"
+    ></div>
+  </div>
+  <div class="row">
+    <div
+      *ngFor="let element of singleHourRowElements; let i = index"
+      class="square"
+      [ngClass]="{ 'red-background': inkSingleHourRow > i }"
+    ></div>
+  </div>
+  <div class="row">
+    <div
+      *ngFor="let element of fiveMinuteRowElements; let i = index"
+      class="square"
+      [ngClass]="{
+        'orange-background': inkFiveMinuteRow > i,
+        'red-background': isQuarterHourMark(i)
+      }"
+    ></div>
+  </div>
+  <div class="row">
+    <div
+      *ngFor="let element of singleMinuteRowElements; let i = index"
+      class="square"
+      [ngClass]="{ 'orange-background': inkSingleMinuteRow > i }"
+    ></div>
+  </div>
+  <div class="time">{{ $time | async | date: "H:mm:ss" }}</div>
+</div>
